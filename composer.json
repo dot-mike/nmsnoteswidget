@@ -1,0 +1,37 @@
+{
+  "name": "dot-mike/nmsnotesfield",
+  "description": "LibreNMS plugin to display notes as widget on device overview page.",
+  "version": "1.0.0",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "dot-mike",
+      "email": "d0tmike@pm.me"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "DotMike\\NmsNotesWidget\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DotMike\\NmsNotesWidget\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "DotMike\\NmsNotesWidget\\Providers\\NotesWidgetProvider"
+      ]
+    }
+  },
+  "archive": {
+    "exclude": [
+      ".devcontainer",
+      ".vscode"
+    ]
+  }
+}

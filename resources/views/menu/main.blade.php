@@ -1,0 +1,1 @@
+<a href="{{ route('plugin.nmsnoteswidget.index') }}"><i class="fa fa-steam fa-fw fa-lg" aria-hidden="true"></i> Notes Widget Plugin</a>
