@@ -42,3 +42,14 @@ php lnms --force -n migrate\n\
 ## Usage
 
 To get started, open LibreNMS and enable the plugin by navigating to Overview->Plugins->Plugins Admin and enable the `nmsnoteswidget` plugin.
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+## Credits
+
+Thanks to the [LibreNMS](https://github.com/librenms/librenms/) team and the exampleplugin [ExamplePlugin](https://github.com/librenms/librenms/tree/master/app/Plugins/ExamplePlugin) for the inspiration.
+
