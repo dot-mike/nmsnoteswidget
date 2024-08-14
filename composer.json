@@ -1,5 +1,5 @@
 {
-  "name": "dot-mike/nmsnotesfield",
+  "name": "dot-mike/nmsnoteswidget",
   "description": "LibreNMS plugin to display notes as widget on device overview page.",
   "version": "1.0.0",
   "type": "library",
