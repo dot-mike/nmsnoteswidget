@@ -8,7 +8,7 @@ use App\Plugins\Hooks\DeviceOverviewHook;
 
 class DeviceHook extends DeviceOverviewHook
 {
-    public $view = 'nmsnoteswidget::device.overview';
+    public string $view = 'nmsnoteswidget::device.overview';
 
     public function data(\App\Models\Device $device): array
     {
