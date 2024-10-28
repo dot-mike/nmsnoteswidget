@@ -33,5 +33,8 @@
       ".devcontainer",
       ".vscode"
     ]
+  },
+  "require": {
+    "librenms/plugin-interfaces": "^1.0"
   }
 }

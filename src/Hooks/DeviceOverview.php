@@ -2,11 +2,9 @@
 
 namespace DotMike\NmsNotesWidget\Hooks;
 
-use DotMike\NmsNotesWidget\Models\CustomField;
-
 use App\Plugins\Hooks\DeviceOverviewHook;
 
-class DeviceHook extends DeviceOverviewHook
+class DeviceOverview extends DeviceOverviewHook
 {
     public string $view = 'nmsnoteswidget::device.overview';
 

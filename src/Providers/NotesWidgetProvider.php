@@ -3,12 +3,12 @@
 namespace DotMike\NmsNotesWidget\Providers;
 
 
-use DotMike\NmsNotesWidget\Hooks\MenuHook;
-use DotMike\NmsNotesWidget\Hooks\DeviceHook;
+use DotMike\NmsNotesWidget\Hooks\MenuEntry;
+use DotMike\NmsNotesWidget\Hooks\DeviceOverview;
 
-use App\Plugins\Hooks\MenuEntryHook;
-use App\Plugins\Hooks\DeviceOverviewHook;
-use App\Plugins\PluginManager;
+use LibreNMS\Interfaces\Plugins\PluginManagerInterface;
+use LibreNMS\Interfaces\Plugins\Hooks\MenuEntryHook;
+use LibreNMS\Interfaces\Plugins\Hooks\DeviceOverviewHook;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
@@ -30,14 +30,20 @@ class NotesWidgetProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(PluginManager $manager): void
+    public function boot(PluginManagerInterface $pluginManager): void
     {
-        $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'nmsnoteswidget');
-        $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'nmsnoteswidget');
+        $pluginName = 'nmsnoteswidget';
+        $pluginManager->publishHook($pluginName, MenuEntryHook::class, MenuEntry::class);
+        $pluginManager->publishHook($pluginName, DeviceOverviewHook::class, DeviceOverview::class);
 
-        $manager->publishHook('nmsnoteswidget', MenuEntryHook::class, MenuHook::class);
-        $manager->publishHook('nmsnoteswidget', DeviceOverviewHook::class, DeviceHook::class);
+        // if plugin is disabled, don't boot it
+        if (! $pluginManager->pluginEnabled($pluginName)) {
+            return;
+        }
+
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', $pluginName);
+        $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', $pluginName);
     }
 
     protected function registerBindings(): void
